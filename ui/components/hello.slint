@@ -1,0 +1,23 @@
+import { AboutSlint } from "std-widgets.slint";
+export component HelloComponent {
+  Rectangle {
+    layout := VerticalLayout {
+      spacing: 16px;
+      AboutSlint {}
+      Text {
+        horizontal-alignment: center;
+        font-size: 42px;
+        font-weight: 700;
+        color: #2379F4;
+        text: "Slint + SurrealismUI + Rust";
+      }
+      Text {
+        horizontal-alignment: center;
+        font-size: 36px;
+        font-weight: 700;
+        color: #2a6dcb;
+        text: "Made By Slimk";
+      }
+    }
+  }
+}

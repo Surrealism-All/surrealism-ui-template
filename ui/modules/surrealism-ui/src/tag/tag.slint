@@ -1,0 +1,46 @@
+/**
+* ============================================
+* @author:syf20020816@outlook.com
+* @since:20230907
+* @version:0.0.1
+* @type:interface
+* @description:
+* # SURTag
+* A small tag used to display data
+* ## properties
+* - in property <string> content : the content of the tag
+* - in property <brush> font-color : tag font color
+* - in property <length> font-size : tag font size
+* ## functions
+* see card's functions
+* ## callbacks
+* - callback clicked(string) : run if you click the tag
+* ============================================
+*/
+import {ROOT_STYLES,Themes} from "../../themes/index.slint";
+import { SURText } from "../text/index.slint";
+import { SURCard } from "../card/index.slint";
+export component Tag inherits SURCard { 
+  card-height: inner.height;
+  card-width: inner.width;
+  padding-size: text==""?None:Tag;
+  border-radius: self.height / 2;
+  in property <brush> font-color<=> inner.color;
+  in property <length> font-size:ROOT-STYLES.sur-font.tag-size;
+  in property <string> text : "";
+  callback clicked(string);
+  
+  inner:=SURText{
+    theme: root.theme;
+    z:12;
+    text: root.text;
+    font-size: root.font-size;
+  }
+  TouchArea {
+    z: 13;
+    clicked => {
+      root.clicked(root.text);
+    }
+  }
+} 
+ 
