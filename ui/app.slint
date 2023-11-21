@@ -2,8 +2,8 @@ import {MainView} from "./index.slint";
 import {ROOT_GLOBAL} from "./global.slint";
 
 export component App inherits Window {
-  preferred-height: ROOT-GLOBAL.window-height;
-  preferred-width: ROOT-GLOBAL.window-width;
+  height: ROOT-GLOBAL.window-height;
+  width: ROOT-GLOBAL.window-width;
   title: @tr("Slint + SurrealismUI + Rust");
   MainView {}
 }
