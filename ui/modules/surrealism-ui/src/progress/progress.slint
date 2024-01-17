@@ -1,0 +1,129 @@
+/**
+* ============================================
+* @author:syf20020816@outlook.com
+* @since:20230915
+* @version:0.1.3
+* @type:interface
+* @description:
+* # SProgress
+* SProgress is commonly used to display download progress or event processing progress
+* And you can fully control it through the progress property
+* ## properties inherits Rectangle
+* - in property <Themes> theme : progress theme
+* - in property <string> text : display text
+* - in-out property <float> progress : progress vaslue
+* - in-out property <int> font-weight : display text font weight
+* - in-out property <length> font-size: display text font size
+* - in-out property <brush> font-color : display text font color
+* - in-out property <bool> font-italic : display text font italic
+* - in-out property <string> font-family : display text font family
+* - private property <length> unit : unit of the progress
+* ## functions
+* - pure public function get-progress() : get timely progress
+* - public function full() : make progress 100%
+* - public function clear() : : make progress 0%
+* - public function add(num:float) : increase progress
+* ## callbacks
+* ============================================
+*/
+import { SText } from "../text/index.slint";
+import { SCard } from "../card/index.slint";
+import { ROOT_STYLES,DefaultSProgressProps } from "../../themes/index.slint";
+import { Themes,BorderType } from "../../use/index.slint";
+export component Progress inherits Rectangle {
+  width: 100%;
+  height: layout.height;
+  in property <Themes> theme :DefaultSProgressProps.theme;
+  in property <string> text : @tr("now: {}% used 100%" , progress);
+  in-out property <float> progress : DefaultSProgressProps.progress;
+  in-out property <int> font-weight : DefaultSProgressProps.font-weight;
+  in-out property <length> font-size: DefaultSProgressProps.font-size;
+  in-out property <brush> font-color : DefaultSProgressProps.font-color;
+  in-out property <bool> font-italic : DefaultSProgressProps.font-italic;
+  in-out property <string> font-family : DefaultSProgressProps.font-family;
+  private property <length> unit : self.width / 100;
+  public function add(num:float) {
+      if(progress<=100 - num){
+        root.progress+=num;
+      }else{
+        progress = 100;
+      }
+  }
+  pure public function get-progress() {
+      root.progress
+  }
+  public function clear() {
+      root.progress = 0;
+  }
+  public function full() {
+      root.progress = 100;
+  }
+  
+  states [
+    light when theme == Themes.Light: {
+      inner.background : ROOT-STYLES.sur-theme-colors.light.deepest;
+    }
+    primary when theme == Themes.Primary: {
+      inner.background : ROOT-STYLES.sur-theme-colors.primary.deepest;
+    }
+    success when theme == Themes.Success: {
+      inner.background : ROOT-STYLES.sur-theme-colors.success.deepest;
+    }
+    info when theme == Themes.Info: {
+      inner.background : ROOT-STYLES.sur-theme-colors.info.deepest;
+    }
+    warning when theme == Themes.Warning: {
+      inner.background : ROOT-STYLES.sur-theme-colors.warning.deepest;
+    }
+    error when theme == Themes.Error: {
+      inner.background : ROOT-STYLES.sur-theme-colors.error.deepest;
+    }
+    dark when theme == Themes.Dark: {
+      inner.background : ROOT-STYLES.sur-theme-colors.dark.deepest;
+    }
+  ]
+    layout:=VerticalLayout {
+      height: bar.height + txt-view.height;
+      padding-left: 4px;
+      padding-right: 4px;
+      bar:=Rectangle {
+        height: outer.height;
+        outer:=SCard { 
+          theme: Light;
+          height: inner.height + 2px;
+          width: 100%;
+          border-radius: self.height / 2;
+          clip: true;
+          border-type: BorderType.Normal;
+          inner:=SCard {
+            x: 0;
+            theme: root.theme;
+            height: 8px;
+            width: root.progress * root.unit;
+            border-radius: self.height / 2;
+            padding: 0;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            drop-shadow-blur: 0;
+            drop-shadow-offset-y: 0;
+            drop-shadow-offset-x: 0;
+          }
+        }
+      }
+      txt-view:=Rectangle{
+        height: txt.font-size * 2;
+        txt:=SText { 
+          theme: root.theme;
+          width: parent.width;
+          text:root.text;
+          font-family: root.font-family;
+          font-size: root.font-size;
+          font-weight: root.font-weight;
+          font-italic: root.font-italic;
+          horizontal-alignment: left;
+         }
+      }
+    }
+}

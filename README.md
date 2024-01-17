@@ -1,47 +1,51 @@
 # Slint + SurrealismUI + Rust
 
-This template should help get you started developing with `Slint` and `Rust`. And this template use `SurrealismUI` as default Component Library.
+This template should help get you started developing with `Slint` and `Rust`
 
-## Recommand IDE
+And this template use `SurrealismUI` as default Component Library
+
+## dependencies version
+
+| name         | version    |
+| ------------ | ---------- |
+| slint        | 1.3.2      |
+| rust         | after 2021 |
+| SurrealismUI | 0.3.3      |
+
+## Recommend IDE
 
 VSCode
 
-## Recommand Plugin
+## Recommend Plugin
 
 - Slint
 - rust
 - rust-analyzer
 
-## About Slimk Commands
+## QuickStart
 
-### Create Slint Project
+### 1. Install cargo-generate
 
-create a project by selecting configuration items
-
-```bash
-# use default strategy to create a new project
-> slimk create hello
-# create a new project with a template
-> slimk create hello --template slimk
-> slimk create hello -t slimk
-```
-### Init an empty Slint Project
-
-this command creates a new project but use the default strategy with no template , you will get an empty slint project
-
-> you do not need to name the project , this way will use your root directory
+you can use the following command to install cargo-generate
 
 ```bash
-> slimk init
+cargo install cargo-generate
 ```
 
-### Select Templates(Native,Remote)
+### 2. generate your own project
+
+**input your project name to replace `{project_name}`**
 
 ```bash
-# native
-> slimk list -n
-# remote
-> slimk list -r
-# both
-> slimk list -a
+cargo generate --git https://github.com/Surrealism-All/surrealism-ui-template --name {project_name}
 ```
+
+### 3. run project
+
+```bash
+cargo run
+```
+
+## Default License
+
+MIT License
