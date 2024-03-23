@@ -12,9 +12,9 @@ And this template use `SurrealismUI` as default Component Library
 
 | name         | version    |
 | ------------ | ---------- |
-| slint        | 1.4.1      |
+| slint        | 1.5.1      |
 | rust         | after 2021 |
-| SurrealismUI | 0.4.0      |
+| SurrealismUI | 0.4.1      |
 
 ## Recommend IDE
 
