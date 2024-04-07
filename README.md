@@ -14,7 +14,7 @@ And this template use `SurrealismUI` as default Component Library
 | ------------ | ---------- |
 | slint        | 1.5.1      |
 | rust         | after 2021 |
-| SurrealismUI | 0.4.1      |
+| SurrealismUI | 0.4.2      |
 
 ## Recommend IDE
 
