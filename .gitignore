@@ -2,4 +2,4 @@
 .vscode
 .idea
 /packages
-*/.DS_Store
+.DS_Store
