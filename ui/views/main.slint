@@ -1,16 +1,17 @@
-import {Hello} from "../components/index.slint";
-import { SButton } from "../modules/surrealism-ui/index.slint";
+import { Hello } from "@ui/components/index.slint";
+import { SButton } from "@sui/index.slint";
 
 export component MainView {
-  height: 100%;
-  width: 100%;
-  VerticalLayout {
-    Hello{}
-    Rectangle {
-      SButton {
-        theme:Dark;
-        text: "Click Me!";
-      }
+    height: 100%;
+    width: 100%;
+    VerticalLayout {
+        Hello { }
+
+        Rectangle {
+            SButton {
+                theme: Dark;
+                text: "Click Me!";
+            }
+        }
     }
-  }
 }
