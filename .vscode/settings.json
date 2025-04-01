@@ -1,0 +1,7 @@
+{
+  "slint.libraryPaths": {
+    "ui": "ui\\",
+    "sui": "ui\\modules\\surrealism-ui\\",
+    "views": "ui\\views\\"
+  }
+}

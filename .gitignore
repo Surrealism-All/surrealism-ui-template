@@ -1,5 +1,5 @@
 /target
-.vscode
+# .vscode
 .idea
 /packages
 **/.DS_Store
